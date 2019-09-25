@@ -1,0 +1,125 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: LSingleplayerRenderer</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.lpoo.snake.View.Lanterna</a> ]
+</div>
+
+<h1>Coverage Summary for Class: LSingleplayerRenderer (com.lpoo.snake.View.Lanterna)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LSingleplayerRenderer</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.lpoo.snake.View.Lanterna;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.googlecode.lanterna.graphics.TextGraphics;
+<i>4</i>&nbsp;import com.lpoo.snake.Model.*;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;public class LSingleplayerRenderer implements LRenderer {
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;    private SingleplayerLevel sp;
+<i>9</i>&nbsp;
+<b class="nc"><i>10</i>&nbsp;    public LSingleplayerRenderer(SingleplayerLevel singleplayer) {</b>
+<b class="nc"><i>11</i>&nbsp;        this.sp = singleplayer;</b>
+<i>12</i>&nbsp;    }
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    public void draw(TextGraphics graphics) {
+<b class="nc"><i>15</i>&nbsp;        LRenderer.drawBackground(graphics, sp.getWidth(), sp.getHeight(), &quot;#305030&quot;);</b>
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;        // Draw Walls
+<b class="nc"><i>18</i>&nbsp;        for (Wall wall : sp.getWalls())</b>
+<b class="nc"><i>19</i>&nbsp;            LRenderer.drawWall(graphics, wall, &quot;#000044&quot;);</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;        // Draw Snake
+<b class="nc"><i>22</i>&nbsp;        Snake snake = sp.getSnake();</b>
+<b class="nc"><i>23</i>&nbsp;        LRenderer.drawSnake(graphics, snake, &quot;#006600&quot;, &quot;#33FF33&quot;);</b>
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;        // Draw Big Apple
+<b class="nc"><i>26</i>&nbsp;        BigApple bigapple = sp.getBigApple();</b>
+<b class="nc"><i>27</i>&nbsp;        if (bigapple.isActive())</b>
+<b class="nc"><i>28</i>&nbsp;            LRenderer.drawBigApple(graphics, bigapple, &quot;#FF0000&quot;);</b>
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;        // Draw Apple
+<b class="nc"><i>31</i>&nbsp;        LRenderer.drawApple(graphics, sp.getApple(), &quot;#FF0000&quot;);</b>
+<b class="nc"><i>32</i>&nbsp;        LRenderer.drawScore(graphics, snake.getScore(), 2, 2, &quot;&quot;);</b>
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;        // Draw Obstacle
+<b class="nc"><i>35</i>&nbsp;        for (Obstacle obstacle1 : sp.getObstacles()) {</b>
+<b class="nc"><i>36</i>&nbsp;            if (obstacle1.isActive())</b>
+<b class="nc"><i>37</i>&nbsp;                LRenderer.drawObstacle(graphics, obstacle1, &quot;#000099&quot;);</b>
+<b class="nc"><i>38</i>&nbsp;            else if (!obstacle1.getBlack())</b>
+<b class="nc"><i>39</i>&nbsp;                LRenderer.drawObstacle(graphics, obstacle1, &quot;#999000&quot;);</b>
+<b class="nc"><i>40</i>&nbsp;        }</b>
+<i>41</i>&nbsp;    }
+<i>42</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-06-02 16:29</div>
+</div>
+</body>
+</html>

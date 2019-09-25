@@ -1,0 +1,189 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SMultiplayerState</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.lpoo.snake.Controller.Swing</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SMultiplayerState (com.lpoo.snake.Controller.Swing)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SMultiplayerState</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 23)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SMultiplayerState$CustomKeyListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 9)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 32)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;
+<i>2</i>&nbsp;package com.lpoo.snake.Controller.Swing;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import com.lpoo.snake.Controller.Swing.Menus.SMenuGameOver;
+<i>5</i>&nbsp;import com.lpoo.snake.Controller.Timer;
+<i>6</i>&nbsp;import com.lpoo.snake.Model.MultiplayerLevel;
+<i>7</i>&nbsp;import com.lpoo.snake.View.Swing.SMultiplayerRenderer;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import javax.swing.*;
+<i>10</i>&nbsp;import java.awt.event.KeyEvent;
+<i>11</i>&nbsp;import java.awt.event.KeyListener;
+<i>12</i>&nbsp;import java.io.IOException;
+<i>13</i>&nbsp;
+<b class="nc"><i>14</i>&nbsp;public class SMultiplayerState extends SState {</b>
+<i>15</i>&nbsp;    private MultiplayerLevel mplevel;
+<i>16</i>&nbsp;    private SMultiplayerRenderer mprenderer;
+<i>17</i>&nbsp;    private Timer gameTimer;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    public SMultiplayerState(int width, int height, int wallSize) throws IOException {
+<b class="nc"><i>20</i>&nbsp;        super(width, height);</b>
+<b class="nc"><i>21</i>&nbsp;        mplevel = new MultiplayerLevel(width / 10, height / 10, wallSize);</b>
+<b class="nc"><i>22</i>&nbsp;        mprenderer = new SMultiplayerRenderer(mplevel);</b>
+<b class="nc"><i>23</i>&nbsp;        mprenderer.addKeyListener(new CustomKeyListener());</b>
+<b class="nc"><i>24</i>&nbsp;        gameTimer = new Timer(1000 / (4 + SGameController.getGame().getLevel() * 3)); // divider in moves per second</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    }
+<i>27</i>&nbsp;
+<b class="nc"><i>28</i>&nbsp;    class CustomKeyListener implements KeyListener {</b>
+<i>29</i>&nbsp;        public void keyTyped(KeyEvent e) {
+<i>30</i>&nbsp;        }
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;        public void keyReleased(KeyEvent e) {
+<i>33</i>&nbsp;        }
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;        public void keyPressed(KeyEvent e) {
+<i>36</i>&nbsp;            try {
+<i>37</i>&nbsp;
+<b class="nc"><i>38</i>&nbsp;                if (processArrowKey(e, mplevel.getSnake1())</b>
+<b class="nc"><i>39</i>&nbsp;                        || processCharKey(e, mplevel.getSnake2(), mplevel.getSnake2().getScore())) {</b>
+<b class="nc"><i>40</i>&nbsp;                    if (mplevel.checkCollision()) {</b>
+<b class="nc"><i>41</i>&nbsp;                        over();</b>
+<i>42</i>&nbsp;                    }
+<b class="nc"><i>43</i>&nbsp;                    gameTimer.resetTimer();</b>
+<i>44</i>&nbsp;                }
+<i>45</i>&nbsp;
+<b class="nc"><i>46</i>&nbsp;            } catch (IOException ex) {</b>
+<b class="nc"><i>47</i>&nbsp;                System.exit(1);</b>
+<b class="nc"><i>48</i>&nbsp;            }</b>
+<i>49</i>&nbsp;        }
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    private void over() {
+<b class="nc"><i>53</i>&nbsp;        if (mplevel.getSnake1().getScore() &gt; mplevel.getSnake2().getScore())</b>
+<b class="nc"><i>54</i>&nbsp;            SGameController.getGame().changeState(new SMenuGameOver(width, height, mplevel.getSnake1().getScore(), 1));</b>
+<b class="nc"><i>55</i>&nbsp;        else if (mplevel.getSnake1().getScore() &lt; mplevel.getSnake2().getScore())</b>
+<b class="nc"><i>56</i>&nbsp;            SGameController.getGame().changeState(new SMenuGameOver(width, height, mplevel.getSnake2().getScore(), 2));</b>
+<i>57</i>&nbsp;        else
+<b class="nc"><i>58</i>&nbsp;            SGameController.getGame().changeState(new SMenuGameOver(width, height, mplevel.getSnake2().getScore(), 3));</b>
+<i>59</i>&nbsp;    }
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    public void update() throws IOException {
+<b class="nc"><i>62</i>&nbsp;        JPanel spren = mprenderer;</b>
+<b class="nc"><i>63</i>&nbsp;        spren.setFocusable(true);</b>
+<b class="nc"><i>64</i>&nbsp;        spren.requestFocusInWindow();</b>
+<b class="nc"><i>65</i>&nbsp;        if (gameTimer.IsUpdateTime()) {</b>
+<b class="nc"><i>66</i>&nbsp;            mplevel.update();</b>
+<b class="nc"><i>67</i>&nbsp;            if (mplevel.checkCollision())</b>
+<b class="nc"><i>68</i>&nbsp;                over();</b>
+<i>69</i>&nbsp;        }
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    }
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    public void draw() {
+<b class="nc"><i>74</i>&nbsp;        JPanel spren = mprenderer;</b>
+<b class="nc"><i>75</i>&nbsp;        spren.revalidate();</b>
+<b class="nc"><i>76</i>&nbsp;        spren.repaint();</b>
+<b class="nc"><i>77</i>&nbsp;        JFrame frame = SGameController.getGame().getJFrame();</b>
+<b class="nc"><i>78</i>&nbsp;        frame.add(spren);</b>
+<i>79</i>&nbsp;    }
+<i>80</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-06-02 16:29</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SMenuGameOver</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.lpoo.snake.Controller.Swing.Menus</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SMenuGameOver (com.lpoo.snake.Controller.Swing.Menus)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SMenuGameOver</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 30)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.lpoo.snake.Controller.Swing.Menus;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.lpoo.snake.Controller.Swing.SState;
+<i>4</i>&nbsp;import com.lpoo.snake.Controller.Swing.SGameController;
+<i>5</i>&nbsp;import com.lpoo.snake.Controller.Score;
+<i>6</i>&nbsp;import javax.swing.*;
+<i>7</i>&nbsp;import java.io.IOException;
+<i>8</i>&nbsp;import static com.lpoo.snake.Controller.Swing.SGameController.getGame;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;public class SMenuGameOver extends SState {
+<i>11</i>&nbsp;    private JButton playAgain, exitButton;
+<i>12</i>&nbsp;    private int score;
+<i>13</i>&nbsp;    private int player;
+<i>14</i>&nbsp;    private Score bestScores;
+<i>15</i>&nbsp;    private Box box;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    public SMenuGameOver(int width, int height, int score, int player) {
+<b class="nc"><i>18</i>&nbsp;        super(width, height);</b>
+<b class="nc"><i>19</i>&nbsp;        this.player = player;</b>
+<b class="nc"><i>20</i>&nbsp;        bestScores = new Score();</b>
+<b class="nc"><i>21</i>&nbsp;        this.score = score;</b>
+<i>22</i>&nbsp;        try {
+<b class="nc"><i>23</i>&nbsp;            bestScores.checkScore(this.player, this.score);</b>
+<b class="nc"><i>24</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>25</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i>26</i>&nbsp;        }</b>
+<b class="nc"><i>27</i>&nbsp;        box = Box.createVerticalBox();</b>
+<b class="nc"><i>28</i>&nbsp;        buildMenu();</b>
+<b class="nc"><i>29</i>&nbsp;        addActionListeners();</b>
+<i>30</i>&nbsp;    }
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    private void buildMenu() {
+<b class="nc"><i>33</i>&nbsp;        box.add(new JLabel(&quot;Game Over&quot;));</b>
+<b class="nc"><i>34</i>&nbsp;        box.add(new JLabel(&quot;Your Score was &quot; + String.valueOf(score)));</b>
+<b class="nc"><i>35</i>&nbsp;        if (this.player &gt; 0) {</b>
+<b class="nc"><i>36</i>&nbsp;            if (this.player == 3)</b>
+<b class="nc"><i>37</i>&nbsp;                box.add(new JLabel(&quot;Got tied !&quot;));</b>
+<i>38</i>&nbsp;            else
+<b class="nc"><i>39</i>&nbsp;                box.add(new JLabel(&quot;Player &quot; + String.valueOf(player) + &quot; Win !&quot;));</b>
+<b class="nc"><i>40</i>&nbsp;            box.add(new JLabel(&quot;Best Score :  &quot; + bestScores.getMbestScore()));</b>
+<i>41</i>&nbsp;        } else {
+<b class="nc"><i>42</i>&nbsp;            box.add(new JLabel(&quot;Best Score :  &quot; + bestScores.getSbestScore()));</b>
+<i>43</i>&nbsp;        }
+<b class="nc"><i>44</i>&nbsp;        playAgain = new JButton(&quot;Play Again&quot;);</b>
+<b class="nc"><i>45</i>&nbsp;        exitButton = new JButton(&quot;Exit &quot;);</b>
+<b class="nc"><i>46</i>&nbsp;        SGameController.addNewLine(box, 5);</b>
+<b class="nc"><i>47</i>&nbsp;        box.add(playAgain);</b>
+<b class="nc"><i>48</i>&nbsp;        SGameController.addNewLine(box, 5);</b>
+<b class="nc"><i>49</i>&nbsp;        box.add(exitButton);</b>
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    public void update() {
+<i>53</i>&nbsp;    }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    public void addActionListeners() {
+<b class="nc"><i>56</i>&nbsp;        playAgain.addActionListener(actionEvent -&gt; {</b>
+<b class="nc"><i>57</i>&nbsp;            getGame().changeState(new SMenuMain(width, height));</b>
+<i>58</i>&nbsp;        });
+<i>59</i>&nbsp;
+<b class="nc"><i>60</i>&nbsp;        exitButton.addActionListener(actionEvent -&gt; {</b>
+<b class="nc"><i>61</i>&nbsp;            System.exit(0);</b>
+<i>62</i>&nbsp;        });
+<i>63</i>&nbsp;    }
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;    @Override
+<i>66</i>&nbsp;    public void draw() {
+<b class="nc"><i>67</i>&nbsp;        SGameController.makeVisible(box, height, width);</b>
+<i>68</i>&nbsp;    }
+<i>69</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-06-02 16:29</div>
+</div>
+</body>
+</html>

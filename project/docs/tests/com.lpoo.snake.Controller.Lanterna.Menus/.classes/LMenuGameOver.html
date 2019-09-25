@@ -1,0 +1,119 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: LMenuGameOver</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.lpoo.snake.Controller.Lanterna.Menus</a> ]
+</div>
+
+<h1>Coverage Summary for Class: LMenuGameOver (com.lpoo.snake.Controller.Lanterna.Menus)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LMenuGameOver</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.lpoo.snake.Controller.Lanterna.Menus;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.googlecode.lanterna.gui2.*;
+<i>4</i>&nbsp;import com.lpoo.snake.Controller.Lanterna.*;
+<i>5</i>&nbsp;import java.io.IOException;
+<i>6</i>&nbsp;import static com.lpoo.snake.Controller.Lanterna.LGameController.getGame;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;public class LMenuGameOver extends LMenuState {
+<i>9</i>&nbsp;    private String scoreText;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    public LMenuGameOver(int width, int height, String score) throws IOException {
+<b class="nc"><i>12</i>&nbsp;        super(width, height);</b>
+<b class="nc"><i>13</i>&nbsp;        scoreText = score;</b>
+<b class="nc"><i>14</i>&nbsp;        buildMenu();</b>
+<i>15</i>&nbsp;    }
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    public void buildMenu() {
+<b class="nc"><i>18</i>&nbsp;        Panel horizontalPanel = build(&quot;Game over&quot;);</b>
+<b class="nc"><i>19</i>&nbsp;        panel = new Panel();</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;        // Single Player Button
+<b class="nc"><i>22</i>&nbsp;        panel.addComponent(new Button(&quot;Play Again&quot;, () -&gt; {</b>
+<i>23</i>&nbsp;            try {
+<b class="nc"><i>24</i>&nbsp;                getGame().changeState(new LMenuMain(width, height));</b>
+<b class="nc"><i>25</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>26</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i>27</i>&nbsp;            }</b>
+<b class="nc"><i>28</i>&nbsp;            menu.close();</b>
+<i>29</i>&nbsp;        }));
+<i>30</i>&nbsp;        // Exit Button
+<b class="nc"><i>31</i>&nbsp;        panel.addComponent(new Button(&quot;Exit&quot;, () -&gt; System.exit(0)));</b>
+<b class="nc"><i>32</i>&nbsp;        panel.addComponent(new Label(&quot;Score : &quot; + scoreText));</b>
+<b class="nc"><i>33</i>&nbsp;        horizontalPanel.addComponent(panel);</b>
+<b class="nc"><i>34</i>&nbsp;        menu.setComponent(horizontalPanel);</b>
+<i>35</i>&nbsp;    }
+<i>36</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-06-02 16:29</div>
+</div>
+</body>
+</html>

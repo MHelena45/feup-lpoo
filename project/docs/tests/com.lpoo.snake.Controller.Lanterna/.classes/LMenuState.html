@@ -1,0 +1,133 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: LMenuState</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.lpoo.snake.Controller.Lanterna</a> ]
+</div>
+
+<h1>Coverage Summary for Class: LMenuState (com.lpoo.snake.Controller.Lanterna)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LMenuState</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (2/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    52.6%
+  </span>
+  <span class="absValue">
+    (10/ 19)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.lpoo.snake.Controller.Lanterna;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.googlecode.lanterna.graphics.TextGraphics;
+<i>4</i>&nbsp;import com.googlecode.lanterna.gui2.*;
+<i>5</i>&nbsp;import com.googlecode.lanterna.input.KeyStroke;
+<i>6</i>&nbsp;import com.googlecode.lanterna.input.KeyType;
+<i>7</i>&nbsp;import com.lpoo.snake.Controller.Lanterna.Menus.LMenuMain;
+<i>8</i>&nbsp;import static com.lpoo.snake.Controller.Lanterna.LGameController.getGame;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import java.io.IOException;
+<i>11</i>&nbsp;import java.util.ArrayList;
+<i>12</i>&nbsp;import java.util.List;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;public abstract class LMenuState extends LState {
+<i>15</i>&nbsp;    protected WindowBasedTextGUI gui;
+<i>16</i>&nbsp;    protected BasicWindow menu;
+<i>17</i>&nbsp;    protected Panel panel;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    public LMenuState(int width, int height) {
+<b class="fc"><i>20</i>&nbsp;        super(width, height);</b>
+<b class="fc"><i>21</i>&nbsp;        gui = new MultiWindowTextGUI(getGame().getScreen());</b>
+<b class="fc"><i>22</i>&nbsp;    }</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    public Panel build(String menuName) {
+<b class="fc"><i>25</i>&nbsp;        menu = new BasicWindow(menuName);</b>
+<b class="fc"><i>26</i>&nbsp;        List&lt;Window.Hint&gt; hints = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>27</i>&nbsp;        hints.add(Window.Hint.CENTERED);</b>
+<b class="fc"><i>28</i>&nbsp;        menu.setHints(hints);</b>
+<b class="fc"><i>29</i>&nbsp;        Panel horizontalPanel = new Panel();</b>
+<b class="fc"><i>30</i>&nbsp;        horizontalPanel.setLayoutManager(new LinearLayout(Direction.HORIZONTAL));</b>
+<b class="fc"><i>31</i>&nbsp;        return horizontalPanel;</b>
+<i>32</i>&nbsp;    }
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    public abstract void buildMenu() throws IOException;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    public void update(KeyStroke key) throws IOException {
+<b class="nc"><i>37</i>&nbsp;        if (key == null)</b>
+<b class="nc"><i>38</i>&nbsp;            return;</b>
+<b class="nc"><i>39</i>&nbsp;        if (key.getKeyType() == KeyType.Character) {</b>
+<b class="nc"><i>40</i>&nbsp;            if (key.getCharacter() == &#39;q&#39;) {</b>
+<b class="nc"><i>41</i>&nbsp;                getGame().changeState(new LMenuMain(width, height));</b>
+<i>42</i>&nbsp;            }
+<i>43</i>&nbsp;        }
+<b class="nc"><i>44</i>&nbsp;    }</b>
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    public void draw(TextGraphics graphics) throws IOException {
+<b class="nc"><i>47</i>&nbsp;        gui.addWindow(menu);</b>
+<b class="nc"><i>48</i>&nbsp;        menu.waitUntilClosed();</b>
+<b class="nc"><i>49</i>&nbsp;    }</b>
+<i>50</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-06-02 16:29</div>
+</div>
+</body>
+</html>

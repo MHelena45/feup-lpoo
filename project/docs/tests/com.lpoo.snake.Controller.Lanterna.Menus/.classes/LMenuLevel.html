@@ -1,0 +1,149 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: LMenuLevel</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.lpoo.snake.Controller.Lanterna.Menus</a> ]
+</div>
+
+<h1>Coverage Summary for Class: LMenuLevel (com.lpoo.snake.Controller.Lanterna.Menus)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LMenuLevel</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    59.4%
+  </span>
+  <span class="absValue">
+    (19/ 32)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.lpoo.snake.Controller.Lanterna.Menus;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.googlecode.lanterna.SGR;
+<i>4</i>&nbsp;import com.googlecode.lanterna.TerminalPosition;
+<i>5</i>&nbsp;import com.googlecode.lanterna.TerminalSize;
+<i>6</i>&nbsp;import com.googlecode.lanterna.TextColor;
+<i>7</i>&nbsp;import com.googlecode.lanterna.graphics.TextGraphics;
+<i>8</i>&nbsp;import com.googlecode.lanterna.input.KeyStroke;
+<i>9</i>&nbsp;import com.googlecode.lanterna.input.KeyType;
+<i>10</i>&nbsp;import com.lpoo.snake.Controller.Lanterna.LGameController;
+<i>11</i>&nbsp;import com.lpoo.snake.Controller.Lanterna.LMenuState;
+<i>12</i>&nbsp;import com.lpoo.snake.View.Lanterna.LRenderer;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import static com.lpoo.snake.Controller.Lanterna.LGameController.getGame;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;import java.io.IOException;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;public class LMenuLevel extends LMenuState {
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    public LMenuLevel(int width, int height) throws IOException {
+<b class="fc"><i>21</i>&nbsp;        super(width, height);</b>
+<b class="fc"><i>22</i>&nbsp;        buildMenu();</b>
+<b class="fc"><i>23</i>&nbsp;    }</b>
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    public void buildMenu() throws IOException {
+<b class="fc"><i>26</i>&nbsp;        draw(getGame().getScreen().newTextGraphics());</b>
+<b class="fc"><i>27</i>&nbsp;    }</b>
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    public void draw(TextGraphics graphics) throws IOException {
+<b class="fc"><i>30</i>&nbsp;        LGameController game = getGame();</b>
+<b class="fc"><i>31</i>&nbsp;        LRenderer.drawBackground(graphics, width, height, &quot;#000FFF&quot;);</b>
+<b class="fc"><i>32</i>&nbsp;        graphics.enableModifiers(SGR.BOLD);</b>
+<b class="fc"><i>33</i>&nbsp;        graphics.putString(new TerminalPosition(6, 3), &quot;Level&quot;);</b>
+<b class="fc"><i>34</i>&nbsp;        graphics.setBackgroundColor(TextColor.Factory.fromString(&quot;#FFFFFF&quot;));</b>
+<b class="fc"><i>35</i>&nbsp;        graphics.fillRectangle(new TerminalPosition(6, 6), new TerminalSize(9, 2), &#39; &#39;);</b>
+<b class="fc"><i>36</i>&nbsp;        graphics.setBackgroundColor(TextColor.Factory.fromString(&quot;#000000&quot;));</b>
+<b class="fc"><i>37</i>&nbsp;        graphics.fillRectangle(new TerminalPosition(6, 6), new TerminalSize(2 + game.getLevel(), 2), &#39; &#39;);</b>
+<b class="fc"><i>38</i>&nbsp;        graphics.setBackgroundColor(TextColor.Factory.fromString(&quot;#000FFF&quot;));</b>
+<b class="fc"><i>39</i>&nbsp;        graphics.putString(new TerminalPosition(16, 7), String.valueOf(game.getLevel() + 1));</b>
+<b class="fc"><i>40</i>&nbsp;        graphics.putString(new TerminalPosition(6, 12), &quot;Arrow Left - decreases level&quot;);</b>
+<b class="fc"><i>41</i>&nbsp;        graphics.putString(new TerminalPosition(6, 14), &quot;Arrow Right - increase level&quot;);</b>
+<b class="fc"><i>42</i>&nbsp;        graphics.putString(new TerminalPosition(6, 16), &quot;Press &#39;q&#39; to leave &quot;);</b>
+<b class="fc"><i>43</i>&nbsp;    }</b>
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    @Override
+<i>46</i>&nbsp;    public void update(KeyStroke key) throws IOException {
+<b class="nc"><i>47</i>&nbsp;        LGameController game = getGame();</b>
+<b class="nc"><i>48</i>&nbsp;        if (key == null)</b>
+<b class="nc"><i>49</i>&nbsp;            return;</b>
+<b class="nc"><i>50</i>&nbsp;        if (key.getKeyType() == KeyType.Character) {</b>
+<b class="nc"><i>51</i>&nbsp;            if (key.getCharacter() == &#39;q&#39;) {</b>
+<b class="nc"><i>52</i>&nbsp;                game.changeState(new LMenuMain(width, height));</b>
+<i>53</i>&nbsp;            }
+<i>54</i>&nbsp;        }
+<b class="nc"><i>55</i>&nbsp;        if (key.getKeyType() == KeyType.ArrowLeft) {</b>
+<b class="nc"><i>56</i>&nbsp;            if (game.getLevel() &gt; 0)</b>
+<b class="nc"><i>57</i>&nbsp;                game.subLevel();</b>
+<i>58</i>&nbsp;        }
+<b class="nc"><i>59</i>&nbsp;        if (key.getKeyType() == KeyType.ArrowRight) {</b>
+<b class="nc"><i>60</i>&nbsp;            if (game.getLevel() &lt; 7)</b>
+<b class="nc"><i>61</i>&nbsp;                game.addLevel();</b>
+<i>62</i>&nbsp;        }
+<i>63</i>&nbsp;
+<b class="nc"><i>64</i>&nbsp;    }</b>
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-06-02 16:29</div>
+</div>
+</body>
+</html>

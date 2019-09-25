@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'info.solidsoft.pitest' version '1.4.0'
+
+}
+
+group 'com.lpoo.snake'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'snake',
+                'Implementation-Version': version,
+                'Main-Class': 'com.lpoo.snake.Application'
+                
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClassName = 'com.lpoo.snake.Application'
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.0.1'
+}

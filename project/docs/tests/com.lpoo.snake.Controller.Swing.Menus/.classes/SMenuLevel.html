@@ -1,0 +1,179 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SMenuLevel</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.lpoo.snake.Controller.Swing.Menus</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SMenuLevel (com.lpoo.snake.Controller.Swing.Menus)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SMenuLevel</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 49)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.lpoo.snake.Controller.Swing.Menus;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.lpoo.snake.Controller.Swing.SState;
+<i>4</i>&nbsp;import com.lpoo.snake.Controller.Swing.SGameController;
+<i>5</i>&nbsp;import javax.swing.*;
+<i>6</i>&nbsp;import static com.lpoo.snake.Controller.Swing.SGameController.getGame;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;public class SMenuLevel extends SState {
+<i>9</i>&nbsp;    private JButton leaveButton;
+<i>10</i>&nbsp;    private Box vbox;
+<i>11</i>&nbsp;    JRadioButton level1;
+<i>12</i>&nbsp;    JRadioButton level2;
+<i>13</i>&nbsp;    JRadioButton level3;
+<i>14</i>&nbsp;    JRadioButton level4;
+<i>15</i>&nbsp;    JRadioButton level5;
+<i>16</i>&nbsp;    JRadioButton level6;
+<i>17</i>&nbsp;    JRadioButton red;
+<i>18</i>&nbsp;    JRadioButton Green;
+<i>19</i>&nbsp;    JRadioButton Cyan;
+<i>20</i>&nbsp;    JRadioButton Blue;
+<i>21</i>&nbsp;    JRadioButton Magenta;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public SMenuLevel(int width, int height) {
+<b class="nc"><i>24</i>&nbsp;        super(width, height);</b>
+<b class="nc"><i>25</i>&nbsp;        buildMenu();</b>
+<b class="nc"><i>26</i>&nbsp;        addActionListeners();</b>
+<i>27</i>&nbsp;    }
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    private void buildMenu() {
+<b class="nc"><i>30</i>&nbsp;        vbox = Box.createVerticalBox();</b>
+<b class="nc"><i>31</i>&nbsp;        SGameController.addNewLine(vbox, 50);</b>
+<b class="nc"><i>32</i>&nbsp;        vbox.add(new JLabel(&quot;Choose your level :&quot;));</b>
+<b class="nc"><i>33</i>&nbsp;        level1 = new JRadioButton(&quot;1&quot;);</b>
+<b class="nc"><i>34</i>&nbsp;        level2 = new JRadioButton(&quot;2&quot;);</b>
+<b class="nc"><i>35</i>&nbsp;        level3 = new JRadioButton(&quot;3&quot;);</b>
+<b class="nc"><i>36</i>&nbsp;        level4 = new JRadioButton(&quot;4&quot;);</b>
+<b class="nc"><i>37</i>&nbsp;        level5 = new JRadioButton(&quot;5&quot;);</b>
+<b class="nc"><i>38</i>&nbsp;        level6 = new JRadioButton(&quot;6&quot;);</b>
+<b class="nc"><i>39</i>&nbsp;        red = new JRadioButton(&quot;red&quot;);</b>
+<b class="nc"><i>40</i>&nbsp;        Green = new JRadioButton(&quot;Green&quot;);</b>
+<b class="nc"><i>41</i>&nbsp;        Cyan = new JRadioButton(&quot;Cyan&quot;);</b>
+<b class="nc"><i>42</i>&nbsp;        Blue = new JRadioButton(&quot;Blue&quot;);</b>
+<b class="nc"><i>43</i>&nbsp;        Magenta = new JRadioButton(&quot;Magenta&quot;);</b>
+<i>44</i>&nbsp;
+<b class="nc"><i>45</i>&nbsp;        ButtonGroup levels = new ButtonGroup();</b>
+<b class="nc"><i>46</i>&nbsp;        levels.add(level1);</b>
+<b class="nc"><i>47</i>&nbsp;        levels.add(level2);</b>
+<b class="nc"><i>48</i>&nbsp;        levels.add(level3);</b>
+<b class="nc"><i>49</i>&nbsp;        levels.add(level4);</b>
+<b class="nc"><i>50</i>&nbsp;        levels.add(level5);</b>
+<b class="nc"><i>51</i>&nbsp;        levels.add(level6);</b>
+<b class="nc"><i>52</i>&nbsp;        SGameController.addNewLine(vbox, 10);</b>
+<b class="nc"><i>53</i>&nbsp;        vbox.add(level1);</b>
+<b class="nc"><i>54</i>&nbsp;        vbox.add(level2);</b>
+<b class="nc"><i>55</i>&nbsp;        vbox.add(level3);</b>
+<b class="nc"><i>56</i>&nbsp;        vbox.add(level4);</b>
+<b class="nc"><i>57</i>&nbsp;        vbox.add(level5);</b>
+<b class="nc"><i>58</i>&nbsp;        vbox.add(level6);</b>
+<b class="nc"><i>59</i>&nbsp;        SGameController.addNewLine(vbox, 15);</b>
+<b class="nc"><i>60</i>&nbsp;        leaveButton = new JButton(&quot;Back to Main&quot;);</b>
+<b class="nc"><i>61</i>&nbsp;        vbox.add(leaveButton);</b>
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;    }
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;    public void addActionListeners() {
+<b class="nc"><i>66</i>&nbsp;        leaveButton.addActionListener(actionEvent -&gt; {</b>
+<b class="nc"><i>67</i>&nbsp;            getGame().changeState(new SMenuMain(width, height));</b>
+<i>68</i>&nbsp;        });
+<b class="nc"><i>69</i>&nbsp;        level1.addActionListener(actionEvent -&gt; {</b>
+<b class="nc"><i>70</i>&nbsp;            getGame().setLevel(1);</b>
+<i>71</i>&nbsp;        });
+<b class="nc"><i>72</i>&nbsp;        level2.addActionListener(actionEvent -&gt; {</b>
+<b class="nc"><i>73</i>&nbsp;            getGame().setLevel(2);</b>
+<i>74</i>&nbsp;        });
+<b class="nc"><i>75</i>&nbsp;        level3.addActionListener(actionEvent -&gt; {</b>
+<b class="nc"><i>76</i>&nbsp;            getGame().setLevel(3);</b>
+<i>77</i>&nbsp;        });
+<b class="nc"><i>78</i>&nbsp;        level4.addActionListener(actionEvent -&gt; {</b>
+<b class="nc"><i>79</i>&nbsp;            getGame().setLevel(4);</b>
+<i>80</i>&nbsp;        });
+<b class="nc"><i>81</i>&nbsp;        level5.addActionListener(actionEvent -&gt; {</b>
+<b class="nc"><i>82</i>&nbsp;            getGame().setLevel(5);</b>
+<i>83</i>&nbsp;        });
+<b class="nc"><i>84</i>&nbsp;        level6.addActionListener(actionEvent -&gt; {</b>
+<b class="nc"><i>85</i>&nbsp;            getGame().setLevel(6);</b>
+<i>86</i>&nbsp;        });
+<i>87</i>&nbsp;    }
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    public void update() {
+<i>90</i>&nbsp;    }
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;    @Override
+<i>93</i>&nbsp;    public void draw() {
+<b class="nc"><i>94</i>&nbsp;        SGameController.makeVisible(vbox, height, width);</b>
+<i>95</i>&nbsp;    }
+<i>96</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-06-02 16:29</div>
+</div>
+</body>
+</html>

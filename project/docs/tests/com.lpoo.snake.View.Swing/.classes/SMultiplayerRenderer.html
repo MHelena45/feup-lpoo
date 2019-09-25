@@ -1,0 +1,123 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SMultiplayerRenderer</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.lpoo.snake.View.Swing</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SMultiplayerRenderer (com.lpoo.snake.View.Swing)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SMultiplayerRenderer</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.lpoo.snake.View.Swing;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.lpoo.snake.Model.BigApple;
+<i>4</i>&nbsp;import com.lpoo.snake.Model.Element;
+<i>5</i>&nbsp;import com.lpoo.snake.Model.MultiplayerLevel;
+<i>6</i>&nbsp;import com.lpoo.snake.Model.Wall;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import javax.swing.*;
+<i>9</i>&nbsp;import java.awt.*;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public class SMultiplayerRenderer extends JPanel implements SRenderer {
+<i>12</i>&nbsp;    static final long serialVersionUID = 100000;
+<i>13</i>&nbsp;    private MultiplayerLevel mp;
+<i>14</i>&nbsp;
+<b class="nc"><i>15</i>&nbsp;    public SMultiplayerRenderer(MultiplayerLevel multiplayer) {</b>
+<b class="nc"><i>16</i>&nbsp;        this.mp = multiplayer;</b>
+<i>17</i>&nbsp;    }
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    public void paintComponent(Graphics g) {
+<b class="nc"><i>20</i>&nbsp;        super.paintComponent(g);</b>
+<b class="nc"><i>21</i>&nbsp;        Graphics2D g2d = (Graphics2D) g;</b>
+<b class="nc"><i>22</i>&nbsp;        SRenderer.drawBackground(g2d, mp.getWidth() * 20, mp.getHeight() * 10, new Color(48, 80, 48));</b>
+<i>23</i>&nbsp;
+<b class="nc"><i>24</i>&nbsp;        for (Wall wall : mp.getWalls())</b>
+<b class="nc"><i>25</i>&nbsp;            SRenderer.drawWall(g2d, wall, new Color(0, 0, 51));</b>
+<i>26</i>&nbsp;
+<b class="nc"><i>27</i>&nbsp;        SRenderer.drawSnake(g2d, mp.getSnake1(), new Color(0, 68, 0), new Color(51, 255, 51));</b>
+<b class="nc"><i>28</i>&nbsp;        SRenderer.drawSnake(g2d, mp.getSnake2(), new Color(0, 0, 68), new Color(51, 51, 255));</b>
+<i>29</i>&nbsp;
+<b class="nc"><i>30</i>&nbsp;        Element apple = mp.getApple();</b>
+<b class="nc"><i>31</i>&nbsp;        SRenderer.drawApple(g2d, apple, new Color(255, 0, 0));</b>
+<i>32</i>&nbsp;
+<b class="nc"><i>33</i>&nbsp;        BigApple bigapple = mp.getBigApple();</b>
+<b class="nc"><i>34</i>&nbsp;        if (bigapple.isActive())</b>
+<b class="nc"><i>35</i>&nbsp;            SRenderer.drawBigApple(g2d, bigapple, new Color(255, 0, 0));</b>
+<i>36</i>&nbsp;
+<b class="nc"><i>37</i>&nbsp;        SRenderer.drawScore(g2d, mp.getSnake1().getScore(), &quot;Player 1 : &quot;, 35);</b>
+<b class="nc"><i>38</i>&nbsp;        SRenderer.drawScore(g2d, mp.getSnake2().getScore(), &quot;Player 2 : &quot;, 60);</b>
+<i>39</i>&nbsp;    }
+<i>40</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-06-02 16:29</div>
+</div>
+</body>
+</html>

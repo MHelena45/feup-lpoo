@@ -1,0 +1,155 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: LMenuMain</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.lpoo.snake.Controller.Lanterna.Menus</a> ]
+</div>
+
+<h1>Coverage Summary for Class: LMenuMain (com.lpoo.snake.Controller.Lanterna.Menus)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LMenuMain</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    28.6%
+  </span>
+  <span class="absValue">
+    (2/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (15/ 45)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.lpoo.snake.Controller.Lanterna.Menus;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.googlecode.lanterna.gui2.*;
+<i>4</i>&nbsp;import com.lpoo.snake.Controller.Lanterna.*;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.io.IOException;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import static com.lpoo.snake.Controller.Lanterna.LGameController.getGame;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;public class LMenuMain extends LMenuState {
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    public LMenuMain(int width, int height) throws IOException {
+<b class="fc"><i>13</i>&nbsp;        super(width, height);</b>
+<b class="fc"><i>14</i>&nbsp;        buildMenu();</b>
+<b class="fc"><i>15</i>&nbsp;    }</b>
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    public void buildMenu() throws IOException {
+<b class="fc"><i>18</i>&nbsp;        LGameController game = getGame();</b>
+<b class="fc"><i>19</i>&nbsp;        Panel horizontalPanel = build(&quot;MenuMain&quot;);</b>
+<b class="fc"><i>20</i>&nbsp;        panel = new Panel();</b>
+<i>21</i>&nbsp;        // Single Player Button
+<b class="fc"><i>22</i>&nbsp;        panel.addComponent(new Button(&quot;SinglePlayer&quot;, () -&gt; {</b>
+<i>23</i>&nbsp;            try {
+<b class="nc"><i>24</i>&nbsp;                game.changeState(new LSingleplayerState(width, height, 7));</b>
+<b class="nc"><i>25</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>26</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i>27</i>&nbsp;            }</b>
+<b class="nc"><i>28</i>&nbsp;            menu.close();</b>
+<b class="nc"><i>29</i>&nbsp;        }));</b>
+<i>30</i>&nbsp;        // Multi Player Button
+<b class="fc"><i>31</i>&nbsp;        panel.addComponent(new Button(&quot;MultiPlayer&quot;, () -&gt; {</b>
+<i>32</i>&nbsp;            try {
+<b class="nc"><i>33</i>&nbsp;                game.changeState(new LMultiplayerState(width, height, 5));</b>
+<b class="nc"><i>34</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>35</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i>36</i>&nbsp;            }</b>
+<b class="nc"><i>37</i>&nbsp;            menu.close();</b>
+<b class="nc"><i>38</i>&nbsp;        }));</b>
+<i>39</i>&nbsp;        // Options Button
+<b class="fc"><i>40</i>&nbsp;        panel.addComponent(new Button(&quot;Change Level&quot;, () -&gt; {</b>
+<i>41</i>&nbsp;            try {
+<b class="nc"><i>42</i>&nbsp;                game.changeState(new LMenuLevel(width, height));</b>
+<b class="nc"><i>43</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>44</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i>45</i>&nbsp;            }</b>
+<b class="nc"><i>46</i>&nbsp;            menu.close();</b>
+<b class="nc"><i>47</i>&nbsp;        }));</b>
+<i>48</i>&nbsp;        // Help Button
+<b class="fc"><i>49</i>&nbsp;        panel.addComponent(new Button(&quot;Help&quot;, () -&gt; {</b>
+<i>50</i>&nbsp;            try {
+<b class="nc"><i>51</i>&nbsp;                game.changeState(new LMenuHelp(width, height));</b>
+<b class="nc"><i>52</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>53</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i>54</i>&nbsp;            }</b>
+<b class="nc"><i>55</i>&nbsp;            menu.close();</b>
+<b class="nc"><i>56</i>&nbsp;        }));</b>
+<i>57</i>&nbsp;        // Score Button
+<b class="fc"><i>58</i>&nbsp;        panel.addComponent(new Button(&quot;High Scores&quot;, () -&gt; {</b>
+<i>59</i>&nbsp;            try {
+<b class="nc"><i>60</i>&nbsp;                game.changeState(new LMenuBestScores(width, height));</b>
+<b class="nc"><i>61</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>62</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i>63</i>&nbsp;            }</b>
+<b class="nc"><i>64</i>&nbsp;            menu.close();</b>
+<b class="nc"><i>65</i>&nbsp;        }));</b>
+<i>66</i>&nbsp;        // Exit Button
+<b class="fc"><i>67</i>&nbsp;        panel.addComponent(new Button(&quot;Exit&quot;, () -&gt; System.exit(0)));</b>
+<b class="fc"><i>68</i>&nbsp;        horizontalPanel.addComponent(panel);</b>
+<b class="fc"><i>69</i>&nbsp;        menu.setComponent(horizontalPanel);</b>
+<i>70</i>&nbsp;
+<b class="fc"><i>71</i>&nbsp;    }</b>
+<i>72</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-06-02 16:29</div>
+</div>
+</body>
+</html>
